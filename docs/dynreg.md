@@ -131,11 +131,41 @@ The properties of the `oauth_consumer` are:
 * nonce: a nonce value
 * A signature computed as follow `hash(sha256, concat(key, secret, nonce))`
 
+The example below the secret used is `robohasnosecret`:
+
 ```json
-"oauth_consumer": { 
-  "key": "robotest-11",
-  "nonce": "EgJ44paAsX",
-  "sign": "0c16e3436382a60c17bceb77e93af8536a52ec08a3fa3a70250bd0b8ed75fb4e" },
+{
+   "client_name":"Robotest",
+   "scope":"https://purl.imsglobal.org/spec/lti-ags/scope/score https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly https://purl.imsglobal.org/spec/lti-ags/scope/lineitem.readonly https://purl.imsglobal.org/spec/lti-ags/scope/lineitem https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly",
+   "https://purl.imsglobal.org/spec/lti-tool-configuration":{
+      "version":"LTI-1p0",
+      "oauth_consumer":{
+         "key":"robotest-11",
+         "nonce":"EgJ44paAsX",
+         "sign":"0c16e3436382a60c17bceb77e93af8536a52ec08a3fa3a70250bd0b8ed75fb4e"
+      },
+      "deployment_id":"128",
+      "target_link_uri":"https://robotest.theedtech.dev",
+      "domain":"robotest.theedtech.dev",
+      "description":"Less clicks, more tests, this is the LTI Robotest!",
+      "messages":[
+         {
+            "type":"LtiDeepLinkingRequest",
+            "target_link_uri":"https://robotest.theedtech.dev"
+         }
+      ],
+      "custom_parameters":{
+         "context_id_history":"$Context.id.history"
+      },
+      "claims":[
+         "sub",
+         "iss",
+         "name",
+         "family_name",
+         "given_name"
+      ]
+   }
+}
 ```
 
 The tool should use the signature to verify the migration request does come from the platform where the tool is actually registered.
