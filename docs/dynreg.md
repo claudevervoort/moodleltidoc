@@ -14,6 +14,8 @@ The dynamic registration is currently only available for site level tool registr
 
 This document will cover how to implement that flow for a tool provider.
 
+An update to this feature currently [under development](https://tracker.moodle.org/browse/MDL-70500) allows the dynamic registration to also be used to update an already existing tool, for example to update in place an LTI 1.1 tool. This can be useful in particular if the tool is used in many courses and has many associated links.
+
 ## The flow in a nutshell
 
 ![Registration flow](assets/regflow.png)
@@ -28,6 +30,14 @@ This document will cover how to implement that flow for a tool provider.
 6. The tool can then expose a close button. The close button uses the windows.postMessage to indicate to moodle that registration operation is done (that it went through or not).
 7. Moodle then refreshes the list of tools. A tool is always registered as pending. The administrator must then review the tool and activate it. The administrator may apply changes at any time.
 
+
+## The Update flow (MDL-70500)
+
+When starting the registration flow, before to launch the registration URL, Moodle will check if the registration URL's domain matches any of the currently installed site tools. If it does, it will instead prompt the user to choose to use the dynamic registration to either update one of the tool or carry on creating a new site tool.
+
+For the tool implementation, there is no difference in the registration flow itslef. However a tool may request to the Moodle site the current registration of the tool. If a value is returned, it means the tool is already registered (LTI 1.0 or above) and the tool may use this information to lookup for which 'account' this re-registration request is made.
+
+For example, a tool may use this information to know the registration request has been issued by the Example institution as identified by its 1.1 consumer key/secret (see below) and the tool will then proceed to update the Example institution account with the LTI 1.3 configuration exposed by the moodle site and request a registration for that specific account.
 ## In more Details
 
 ### The registration initiation request
@@ -102,6 +112,33 @@ Here is an example of a full platform configuration:
   }
 }
 ```
+
+## Requesting current registration (MDL-70500)
+
+With MDL-70500, a tool may issue a GET request to the registration end point with the token as the Bearer token. If the tool is already registered, Moodle will return the current registration. The registration value will depend on whether or not the current registration is already an LTI 1.3 tool or not.
+
+The response can then be:
+
+* `404` if the tool is not already registered (it's therefore a new regisitration)
+* LTI 1.3 Client Registration including the current `client_id` and `lti_deployment_id`, same as the response from the registration request.
+* LTI 1.x or 2.x Client profile
+
+The LTI 1.x or 2.x Client profile differ from the LTI 1.3 one in that they don't contain the LTI 1.3 Open Id related informations. They do contain however the LTI Information. They also contain the current OAuth Credentials signed with the OAuth secret in the LTI Information section allowing the tool to automate the migration.
+
+The properties of the `oauth_consumer` are:
+
+* key: the LTI 1.x consumer key or LTI 2.x Tool Proxy GUID
+* nonce: a nonce value
+* A signature computed as follow `hash(sha256, concat(key, secret, nonce))`
+
+```json
+"oauth_consumer": { 
+  "key": "robotest-11",
+  "nonce": "EgJ44paAsX",
+  "sign": "0c16e3436382a60c17bceb77e93af8536a52ec08a3fa3a70250bd0b8ed75fb4e" },
+```
+
+The tool should use the signature to verify the migration request does come from the platform where the tool is actually registered.
 
 ## Registering your tool
 
