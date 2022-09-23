@@ -1,0 +1,71 @@
+{
+    "nonce": "1043655635",
+    "iat": 1663795946,
+    "exp": 1663796006,
+    "iss": "https://snl-moodle.cengage.com",
+    "aud": "m5roK6Q6uq04PD7",
+    "https://purl.imsglobal.org/spec/lti/claim/deployment_id": "68",
+    "https://purl.imsglobal.org/spec/lti/claim/target_link_uri": "https://int-gateway.cengage.com/rest/launchBasicLTI/1095300/20709061095300393429894283527/11145312/nodeId/4989507",
+    "sub": "3",
+    "https://purl.imsglobal.org/spec/lti/claim/lis": {
+      "person_sourcedid": "",
+      "course_section_sourcedid": ""
+    },
+    "https://purl.imsglobal.org/spec/lti/claim/roles": [
+      "http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor"
+    ],
+    "https://purl.imsglobal.org/spec/lti/claim/context": {
+      "id": "3",
+      "label": "Claude's Corner",
+      "title": "Claude's Corner",
+      "type": [
+        "CourseSection"
+      ]
+    },
+    "https://purl.imsglobal.org/spec/lti/claim/resource_link": {
+      "title": "3.9 Why Politics Matters: Choice",
+      "description": "Essay Activity: Parent",
+      "id": "2500"
+    },
+    "https://purl.imsglobal.org/spec/lti-bo/claim/basicoutcome": {
+      "lis_result_sourcedid": "{\"data\":{\"instanceid\":\"2500\",\"userid\":\"3\",\"typeid\":\"68\",\"launchid\":2144478908},\"hash\":\"031153b7bf5bf9e170c1e6cffeeda0e21c67890e05d634d6810b17a638f7a1f6\"}",
+      "lis_outcome_service_url": "https://snl-moodle.cengage.com/mod/lti/service.php"
+    },
+    "given_name": "Saul",
+    "family_name": "Tigh",
+    "name": "Saul Tigh",
+    "https://purl.imsglobal.org/spec/lti/claim/ext": {
+      "user_username": "stigh",
+      "lms": "moodle-2"
+    },
+    "email": "stigh@swlearning.com",
+    "https://purl.imsglobal.org/spec/lti/claim/launch_presentation": {
+      "locale": "en",
+      "document_target": "iframe",
+      "return_url": "https://snl-moodle.cengage.com/mod/lti/return.php?course=3&launch_container=2&instanceid=2500&sesskey=RfeKqqE8wY"
+    },
+    "https://purl.imsglobal.org/spec/lti/claim/tool_platform": {
+      "product_family_code": "moodle",
+      "version": "2022041903",
+      "guid": "c3cb3e3000bd371e1739a399161d6bec",
+      "name": "Sentinel",
+      "description": "Moodle of Sentinel team"
+    },
+    "https://purl.imsglobal.org/spec/lti/claim/version": "1.3.0",
+    "https://purl.imsglobal.org/spec/lti/claim/message_type": "LtiResourceLinkRequest",
+    "https://purl.imsglobal.org/spec/lti/claim/custom": {
+      "context_id_history": "",
+      "context_start_date": "2019-03-22T00:00:00+00:00",
+      "context_end_date": "2020-03-21T00:00:00+00:00"
+    },
+    "https://purl.imsglobal.org/spec/lti-ags/claim/endpoint": {
+      "scope": [
+        "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem",
+        "https://purl.imsglobal.org/spec/lti-ags/scope/lineitem.readonly",
+        "https://purl.imsglobal.org/spec/lti-ags/scope/result.readonly",
+        "https://purl.imsglobal.org/spec/lti-ags/scope/score"
+      ],
+      "lineitems": "https://snl-moodle.cengage.com/mod/lti/services.php/3/lineitems?type_id=68",
+      "lineitem": "https://snl-moodle.cengage.com/mod/lti/services.php/3/lineitems/1924/lineitem?type_id=68"
+    }
+  }
