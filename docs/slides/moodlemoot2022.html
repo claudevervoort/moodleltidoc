@@ -108,6 +108,28 @@
 					<video data-autoplay src="ltimoot/deeplinking_flow.mp4"></video>
 				</section>
 				<section>
+						<pre><code data-trim data-noescape>
+							{
+								"type": "ltiResourceLink",
+								"title": "A title",
+								"text": "This is a link to an activity that will be graded",
+								"url": "https://lti.example.com/launchMe",
+								"lineItem": {
+								  "scoreMaximum": 87,
+								  "resourceId": "xyzpdq1234",
+								  "tag": "originality"
+								},
+								"custom": {
+								  "quiz_id": "az-123",
+								  "duedate": "$Resource.submission.endDateTime"
+								},
+								"iframe": {
+								  "height": 890
+								}
+							}
+					    </code></pre>
+				</section>
+				<section>
 					<em>Ok, enough about the launches, what about LTI Services?</em>
 				</section>
 				<section>
@@ -171,11 +193,12 @@
 				</section>
 				<section>
 					<h3>What's next?</h3>
-					<p>MDL-69233 Course Groups Service (4.1?)</p>
-					<p>MDL-69275 Gradebook launch to student's work (4.1?)</p>
-					<p>MDL-67560 LTI embedded in Text editor</p>
-					<p>MDL-67559 Course Navigation placement</p>
-					<p>MDL-72022 Cookie shim</p>
+					<p><a href="https://tracker.moodle.org/browse/MDL-69233">MDL-69233</a> Course Groups Service (4.1?)</p>
+					<p><a href="https://tracker.moodle.org/browse/MDL-69275">MDL-69275</a> Gradebook launch to student's work (4.1?)</p>
+					<p><a href="https://tracker.moodle.org/browse/MDL-67560">MDL-67560</a> LTI embedded in Text editor</p>
+					<p><a href="https://tracker.moodle.org/browse/MDL-67559">MDL-67559</a> Course Navigation placement</p>
+					<p><a href="https://tracker.moodle.org/browse/MDL-72022">MDL-72022></a> Cookie shim</p>
+					<p><a href="https://tracker.moodle.org/browse/MDL-69489">MDL-69489</a> LTI only available to specific course categories</p>
 					<p>...</p>
 				</section>
 				<section>
@@ -188,6 +211,7 @@
 					</ul>
 				</section>
 				<section>
+					<p>claude.vervoort@cengage.com</p>
 					<p>claude.vervoort@gmail.com</p>
 					<p>LTI Room in Moodle Matrix #moodle-lti.moodle.com</p>
 				</section>
